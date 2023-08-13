@@ -26,6 +26,11 @@ const DragAndDropContainer = () => {
     const destList =
       destination.droppableId === "my-droppable-area" ? leftItems : rightItems;
 
+    // Prevent dropping an item onto the same side
+    if (sourceList === destList) {
+      return;
+    }
+
     // Copy items arrays to avoid mutating state directly
     const newSourceList = [...sourceList];
     const newDestList = [...destList];
